@@ -1,0 +1,14 @@
+com/olxyamel/ReactNativeFlipper.java
+ com.olxyamel.ReactNativeFlipper
+ com.olxyamel.ReactNativeFlipper$1
+ com.olxyamel.ReactNativeFlipper$2
+ com.olxyamel.ReactNativeFlipper$2$1
+com/olxyamel/BuildConfig.java
+ com.olxyamel.BuildConfig
+com/olxyamel/MainActivity.java
+ com.olxyamel.MainActivity
+com/facebook/react/PackageList.java
+ com.facebook.react.PackageList
+com/olxyamel/MainApplication.java
+ com.olxyamel.MainApplication
+ com.olxyamel.MainApplication$1
