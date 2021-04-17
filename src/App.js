@@ -10,10 +10,10 @@ import ListItem from './screens/ListItem';
 // firebase.initializeApp(firebaseConfig);
 const App = () => {
   return (
-    <>
+    <SafeAreaView>
       <StatusBar barStyle="dark-content" backgroundColor="black" />
       <ListItem />
-    </>
+    </SafeAreaView>
   );
 };
 

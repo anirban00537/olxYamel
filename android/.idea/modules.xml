@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/olxYamel.iml" filepath="$PROJECT_DIR$/.idea/modules/olxYamel.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/olxYamel.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/olxYamel.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1962084333/olxYamel.react-native-vector-icons.iml" filepath="$PROJECT_DIR$/.idea/modules/1962084333/olxYamel.react-native-vector-icons.iml" />
+    </modules>
+  </component>
+</project>
