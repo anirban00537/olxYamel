@@ -6,42 +6,50 @@ import {
   Text,
   TextInput,
   TouchableOpacity,
+  ScrollView,
 } from 'react-native';
 
-const Login = () => {
+const Login = ({navigation}) => {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
 
   return (
-    <View style={styles.mainContainer}>
-      <View style={styles.containerImage}>
-        <Image
-          style={styles.loginImage}
-          source={require('../assets/login.png')}
-        />
-        <Text style={styles.LoginText}>LOGIN </Text>
+    <ScrollView>
+      <View style={styles.mainContainer}>
+        <View style={styles.containerImage}>
+          <Image
+            style={styles.loginImage}
+            source={require('../assets/login.png')}
+          />
+          <Text style={styles.LoginText}>LOGIN </Text>
+        </View>
+        <View style={styles.formContainer}>
+          <Text style={styles.text}>Username</Text>
+          <TextInput
+            label="Email"
+            value={email}
+            style={styles.email}
+            onChangeText={text => setEmail(text)}
+          />
+          <Text style={styles.text}>Password</Text>
+          <TextInput
+            label="Password"
+            value={password}
+            style={styles.password}
+            secureTextEntry={true}
+            onChangeText={text => setPassword(text)}
+          />
+          <TouchableOpacity style={styles.loginbtn}>
+            <Text style={styles.loginBtnText}>Login</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.Signup}
+            onPress={() => navigation.navigate('Signup')}>
+            <Text style={styles.SignupText}>Signup</Text>
+          </TouchableOpacity>
+        </View>
       </View>
-      <View style={styles.formContainer}>
-        <Text style={styles.text}>Username</Text>
-        <TextInput
-          label="Email"
-          value={email}
-          style={styles.email}
-          onChangeText={text => setEmail(text)}
-        />
-        <Text style={styles.text}>Password</Text>
-        <TextInput
-          label="Password"
-          value={password}
-          style={styles.password}
-          secureTextEntry={true}
-          onChangeText={text => setPassword(text)}
-        />
-        <TouchableOpacity style={styles.loginbtn}>
-          <Text style={styles.loginBtnText}>Login</Text>
-        </TouchableOpacity>
-      </View>
-    </View>
+    </ScrollView>
   );
 };
 
@@ -49,6 +57,7 @@ const styles = StyleSheet.create({
   mainContainer: {
     backgroundColor: '#fff',
     flex: 1,
+    height: '100%',
   },
   containerImage: {
     alignItems: 'center',
@@ -69,15 +78,19 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 29,
   },
+  SignupText: {
+    color: 'black',
+    fontSize: 20,
+  },
   formContainer: {
     width: '100%',
     height: '50%',
+    flex: 1,
     flexDirection: 'column',
     justifyContent: 'space-evenly',
     alignItems: 'center',
   },
   loginbtn: {
-    margin: 10,
     backgroundColor: 'black',
     width: '80%',
     borderRadius: 15,
@@ -85,7 +98,17 @@ const styles = StyleSheet.create({
     color: 'white',
     justifyContent: 'center',
     alignItems: 'center',
-    margin: 30,
+    marginTop: 30,
+  },
+  Signup: {
+    backgroundColor: 'white',
+    width: '80%',
+    borderRadius: 15,
+    height: 50,
+    color: 'white',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 10,
   },
   email: {
     borderWidth: 0,

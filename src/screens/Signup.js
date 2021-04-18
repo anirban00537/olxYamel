@@ -9,7 +9,7 @@ import {
   KeyboardAvoidingView,
 } from 'react-native';
 
-const Signup = () => {
+const Signup = ({navigation}) => {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
 
@@ -20,7 +20,7 @@ const Signup = () => {
           style={styles.loginImage}
           source={require('../assets/login.png')}
         />
-        <Text style={styles.LoginText}>Signup </Text>
+        <Text style={styles.LoginText}>SIGNUP</Text>
       </View>
       <View style={styles.formContainer}>
         <Text style={styles.text}>Username</Text>
@@ -40,6 +40,12 @@ const Signup = () => {
         />
         <TouchableOpacity style={styles.loginbtn}>
           <Text style={styles.loginBtnText}>Signup</Text>
+        </TouchableOpacity>
+        {/* onPress={() => navigation.goBack()} */}
+        <TouchableOpacity
+          style={styles.back}
+          onPress={() => navigation.goBack()}>
+          <Text style={styles.backText}>Go Back</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -76,6 +82,15 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'space-evenly',
     alignItems: 'center',
+    flex: 1,
+  },
+  back: {
+    height: 90,
+    width: '80%',
+    alignItems: 'center',
+  },
+  backText: {
+    fontSize: 20,
   },
   loginbtn: {
     margin: 10,
@@ -108,7 +123,7 @@ const styles = StyleSheet.create({
     fontSize: 19,
   },
   text: {
-    margin: 10,
+    margin: 15,
   },
 });
 export default Signup;
