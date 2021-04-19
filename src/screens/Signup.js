@@ -8,11 +8,25 @@ import {
   TouchableOpacity,
   KeyboardAvoidingView,
 } from 'react-native';
-
+import auth from '@react-native-firebase/auth';
+// import {auth} from '../firebase';
 const Signup = ({navigation}) => {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
-
+  const signupUser = async () => {
+    // auth
+    //   .createUserWithEmailAndPassword(email, password)
+    //   .then(authUser => {
+    //     authUser.user.update({
+    //       username: 'user',
+    //     });
+    //   })
+    //   .catch(error => {
+    //     alert(error.message);
+    //   });
+    const result = await auth().createUserWithEmailAndPassword(email, password);
+    console.log(result);
+  };
   return (
     <View style={styles.mainContainer}>
       <View style={styles.containerImage}>
@@ -38,7 +52,7 @@ const Signup = ({navigation}) => {
           secureTextEntry={true}
           onChangeText={text => setPassword(text)}
         />
-        <TouchableOpacity style={styles.loginbtn}>
+        <TouchableOpacity style={styles.loginbtn} onPress={() => signupUser()}>
           <Text style={styles.loginBtnText}>Signup</Text>
         </TouchableOpacity>
         {/* onPress={() => navigation.goBack()} */}

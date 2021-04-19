@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {
   View,
   StyleSheet,
@@ -8,10 +8,20 @@ import {
   TouchableOpacity,
   ScrollView,
 } from 'react-native';
+// import {auth} from '../firebase';
 
 const Login = ({navigation}) => {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
+
+  useEffect(() => {
+    // const unsubscribe = auth.onAuthStateChanged(authUser => {
+    //   if (authUser) {
+    //     navigation.replace('Home');
+    //   }
+    // });
+    // return unsubscribe;
+  }, []);
 
   return (
     <ScrollView>

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "52441528117",
+    "project_id": "sellit-9f787",
+    "storage_bucket": "sellit-9f787.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:52441528117:android:01a9345de7a825fdaebe7c",
+        "android_client_info": {
+          "package_name": "com.olxyamel"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "52441528117-qjh17qr1kh1ncc57srl1fvnbrt0altoq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDFcY-e6ZDC7bdEk7B5m5JNgJC6t3Zrqvc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "52441528117-qjh17qr1kh1ncc57srl1fvnbrt0altoq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

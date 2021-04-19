@@ -106,7 +106,7 @@ const ListItem = ({navigation}) => {
       </Appbar.Header>
 
       <FlatList
-        style={{marginBottom: 0}}
+        style={{marginBottom: 50}}
         data={fakeData}
         keyExtractor={item => {
           item.index;
