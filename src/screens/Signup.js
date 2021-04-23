@@ -7,62 +7,79 @@ import {
   TextInput,
   TouchableOpacity,
   KeyboardAvoidingView,
+  ScrollView,
 } from 'react-native';
 import auth from '@react-native-firebase/auth';
 // import {auth} from '../firebase';
 const Signup = ({navigation}) => {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
+  const [name, setName] = React.useState('');
   const signupUser = async () => {
-    // auth
-    //   .createUserWithEmailAndPassword(email, password)
-    //   .then(authUser => {
-    //     authUser.user.update({
-    //       username: 'user',
-    //     });
-    //   })
-    //   .catch(error => {
-    //     alert(error.message);
-    //   });
-    const result = await auth().createUserWithEmailAndPassword(email, password);
-    console.log(result);
+    if (!email || !password) {
+      alert('Fiill all the fields');
+      return;
+    }
+    try {
+      await auth()
+        .createUserWithEmailAndPassword(email, password)
+        .then(authUser => {
+          authUser.user.update({
+            displayName: name,
+            age: 33,
+          });
+        });
+    } catch (error) {
+      alert('Something went wrong try again later');
+    }
   };
   return (
-    <View style={styles.mainContainer}>
-      <View style={styles.containerImage}>
-        <Image
-          style={styles.loginImage}
-          source={require('../assets/login.png')}
-        />
-        <Text style={styles.LoginText}>SIGNUP</Text>
+    <ScrollView>
+      <View style={styles.mainContainer}>
+        <View style={styles.containerImage}>
+          <Image
+            style={styles.loginImage}
+            source={require('../assets/login.png')}
+          />
+          <Text style={styles.LoginText}>SIGNUP</Text>
+        </View>
+        <View style={styles.formContainer}>
+          <Text style={styles.text}>Name</Text>
+          <TextInput
+            label="Name"
+            value={name}
+            style={styles.email}
+            onChangeText={text => setName(text)}
+          />
+          <Text style={styles.text}>Username</Text>
+          <TextInput
+            label="Email"
+            value={email}
+            style={styles.email}
+            onChangeText={text => setEmail(text)}
+          />
+          <Text style={styles.text}>Password</Text>
+          <TextInput
+            label="Password"
+            value={password}
+            style={styles.password}
+            secureTextEntry={true}
+            onChangeText={text => setPassword(text)}
+          />
+          <TouchableOpacity
+            style={styles.loginbtn}
+            onPress={() => signupUser()}>
+            <Text style={styles.loginBtnText}>Signup</Text>
+          </TouchableOpacity>
+          {/* onPress={() => navigation.goBack()} */}
+          <TouchableOpacity
+            style={styles.back}
+            onPress={() => navigation.goBack()}>
+            <Text style={styles.backText}>Go Back</Text>
+          </TouchableOpacity>
+        </View>
       </View>
-      <View style={styles.formContainer}>
-        <Text style={styles.text}>Username</Text>
-        <TextInput
-          label="Email"
-          value={email}
-          style={styles.email}
-          onChangeText={text => setEmail(text)}
-        />
-        <Text style={styles.text}>Password</Text>
-        <TextInput
-          label="Password"
-          value={password}
-          style={styles.password}
-          secureTextEntry={true}
-          onChangeText={text => setPassword(text)}
-        />
-        <TouchableOpacity style={styles.loginbtn} onPress={() => signupUser()}>
-          <Text style={styles.loginBtnText}>Signup</Text>
-        </TouchableOpacity>
-        {/* onPress={() => navigation.goBack()} */}
-        <TouchableOpacity
-          style={styles.back}
-          onPress={() => navigation.goBack()}>
-          <Text style={styles.backText}>Go Back</Text>
-        </TouchableOpacity>
-      </View>
-    </View>
+    </ScrollView>
   );
 };
 
@@ -70,6 +87,7 @@ const styles = StyleSheet.create({
   mainContainer: {
     backgroundColor: '#fff',
     flex: 1,
+    height: '100%',
   },
   containerImage: {
     alignItems: 'center',
@@ -93,10 +111,10 @@ const styles = StyleSheet.create({
   formContainer: {
     width: '100%',
     height: '50%',
+    flex: 1,
     flexDirection: 'column',
     justifyContent: 'space-evenly',
     alignItems: 'center',
-    flex: 1,
   },
   back: {
     height: 90,
@@ -138,6 +156,9 @@ const styles = StyleSheet.create({
   },
   text: {
     margin: 15,
+  },
+  scrollView: {
+    height: '100%',
   },
 });
 export default Signup;

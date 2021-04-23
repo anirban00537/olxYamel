@@ -4,6 +4,14 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/olxYamel.iml" filepath="$PROJECT_DIR$/.idea/modules/olxYamel.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/olxYamel.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/olxYamel.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-666070002/olxYamel.react-native-community_masked-view.iml" filepath="$PROJECT_DIR$/.idea/modules/-666070002/olxYamel.react-native-community_masked-view.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-2017388116/olxYamel.react-native-firebase_app.iml" filepath="$PROJECT_DIR$/.idea/modules/-2017388116/olxYamel.react-native-firebase_app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1138553149/olxYamel.react-native-firebase_auth.iml" filepath="$PROJECT_DIR$/.idea/modules/1138553149/olxYamel.react-native-firebase_auth.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-494248522/olxYamel.react-native-firebase_firestore.iml" filepath="$PROJECT_DIR$/.idea/modules/-494248522/olxYamel.react-native-firebase_firestore.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/419398793/olxYamel.react-native-gesture-handler.iml" filepath="$PROJECT_DIR$/.idea/modules/419398793/olxYamel.react-native-gesture-handler.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-2096846861/olxYamel.react-native-reanimated.iml" filepath="$PROJECT_DIR$/.idea/modules/-2096846861/olxYamel.react-native-reanimated.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-33317198/olxYamel.react-native-safe-area-context.iml" filepath="$PROJECT_DIR$/.idea/modules/-33317198/olxYamel.react-native-safe-area-context.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1728206154/olxYamel.react-native-screens.iml" filepath="$PROJECT_DIR$/.idea/modules/1728206154/olxYamel.react-native-screens.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/1962084333/olxYamel.react-native-vector-icons.iml" filepath="$PROJECT_DIR$/.idea/modules/1962084333/olxYamel.react-native-vector-icons.iml" />
     </modules>
   </component>

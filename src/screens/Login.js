@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
   ScrollView,
 } from 'react-native';
-// import {auth} from '../firebase';
+import auth from '@react-native-firebase/auth';
 
 const Login = ({navigation}) => {
   const [email, setEmail] = React.useState('');
@@ -22,7 +22,19 @@ const Login = ({navigation}) => {
     // });
     // return unsubscribe;
   }, []);
-
+  const signInUser = async () => {
+    if (!email || !password) {
+      alert('Fiill all the fields');
+      return;
+    }
+    try {
+      const result = await auth().signInWithEmailAndPassword(email, password);
+      console.log(result.user);
+      console.log('running');
+    } catch (error) {
+      alert('Something went wrong try again later');
+    }
+  };
   return (
     <ScrollView>
       <View style={styles.mainContainer}>
@@ -49,7 +61,9 @@ const Login = ({navigation}) => {
             secureTextEntry={true}
             onChangeText={text => setPassword(text)}
           />
-          <TouchableOpacity style={styles.loginbtn}>
+          <TouchableOpacity
+            style={styles.loginbtn}
+            onPress={() => signInUser()}>
             <Text style={styles.loginBtnText}>Login</Text>
           </TouchableOpacity>
           <TouchableOpacity

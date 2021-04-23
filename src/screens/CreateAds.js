@@ -9,37 +9,97 @@ import {
   TouchableOpacity,
   Button,
 } from 'react-native';
-
-const CreateAds = () => {
+import Firestore from '@react-native-firebase/firestore';
+import auth from '@react-native-firebase/auth';
+const CreateAds = ({navigation}) => {
   const [name, setName] = useState();
   const [desc, setDesc] = useState();
   const [year, setYear] = useState();
   const [price, setPrice] = useState();
   const [phone, setPhone] = useState();
+  const createAds = async () => {
+    try {
+      await Firestore().collection('ads').add({
+        name,
+        desc,
+        year,
+        price,
+        phone,
+        image:
+          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgLZal2ngrRXdEebFSXKENv_Joj38zpGXhwA&usqp=CAU',
+        uid: auth().currentUser.uid,
+      });
+      setName('');
+      setDesc('');
+      setYear('');
+      setPrice('');
+      setPhone('');
+      alert('Posted Successfully');
+    } catch (error) {
+      alert(error.message);
+    }
+  };
   return (
     <ScrollView style={styles.scrollContainer}>
       <View style={styles.container}>
         <Text style={styles.Title}>Post Ads</Text>
 
-        <TextInput placeholder="Enter Name" style={styles.text} />
+        <TextInput
+          placeholder="Enter Name"
+          style={styles.text}
+          value={name}
+          onChangeText={val => {
+            setName(val);
+          }}
+        />
         <TextInput
           placeholder="Enter Description"
           multiline={true}
           numberOfLines={4}
+          value={desc}
           style={styles.text}
+          onChangeText={val => {
+            setDesc(val);
+          }}
         />
         <TextInput
           placeholder="Enter Year"
           keyboardType="numeric"
           style={styles.text}
+          value={year}
+          onChangeText={val => {
+            setYear(val);
+          }}
         />
-        <TextInput placeholder="Enter Price" style={styles.text} />
-        <TextInput placeholder="Enter Phone Number" style={styles.text} />
+        <TextInput
+          placeholder="Enter Price"
+          style={styles.text}
+          value={price}
+          onChangeText={val => {
+            setPrice(val);
+          }}
+        />
+        <TextInput
+          placeholder="Enter Phone Number"
+          style={styles.text}
+          value={phone}
+          onChangeText={val => {
+            setPhone(val);
+          }}
+        />
         <TouchableOpacity style={styles.cameraBtn}>
           <Text style={styles.cameraBtnText}>Take Photo</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.createAdsButton}>
-          <Text style={styles.CreateAdsTexr}>CreateAds</Text>
+          <Text
+            style={styles.CreateAdsTexr}
+            onPress={() =>
+              createAds().then(() => {
+                navigation.replace('Home');
+              })
+            }>
+            CreateAds
+          </Text>
         </TouchableOpacity>
       </View>
     </ScrollView>

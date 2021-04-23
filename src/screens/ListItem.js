@@ -1,18 +1,10 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-import {
-  View,
-  Text,
-  StyleSheet,
-  FlatList,
-  Image,
-  SafeAreaView,
-  ScrollView,
-  Button,
-} from 'react-native';
+import {View, Text, StyleSheet, FlatList, SafeAreaView} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {Avatar, Card, Title, Paragraph, Appbar} from 'react-native-paper';
+import firestore from '@react-native-firebase/firestore';
 
 const MORE_ICON = Platform.OS === 'ios' ? 'dots-horizontal' : 'dots-vertical';
 
@@ -99,6 +91,17 @@ const ListItem = ({navigation}) => {
         'Et sit cillum velit cillum esse irure consequat nulla. Dolore dolore mollit deserunt in dolore veniam officia irure ad ut adipisicing mollit mollit labore. Incididunt velit culpa do incididunt aliquip quis est proident magna elit aute esse.',
     },
   ];
+  const [item, setItem] = useState([]);
+  const getData = async () => {
+    const quarySnap = await firestore().collection('ads').get();
+    const result = quarySnap.docs.map(docSnap => docSnap.data());
+    console.log(result);
+    setItem(result);
+  };
+  useEffect(() => {
+    getData();
+    return console.log('Cleanup');
+  }, []);
   return (
     <SafeAreaView style={styles.bodyHome}>
       <Appbar.Header style={styles.appBar}>
@@ -107,7 +110,7 @@ const ListItem = ({navigation}) => {
 
       <FlatList
         style={{marginBottom: 50}}
-        data={fakeData}
+        data={item}
         keyExtractor={item => {
           item.index;
         }}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {StyleSheet, View, Image} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
@@ -10,7 +10,7 @@ import CreateAds from './screens/CreateAds';
 import ListItem from './screens/ListItem';
 import Details from './screens/Details';
 import Account from './screens/Account';
-import {db} from './firebase';
+import auth from '@react-native-firebase/auth';
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 const AuthNavigator = () => {
@@ -68,7 +68,18 @@ const HomeNavigator = () => {
   );
 };
 const Navigation = () => {
-  const user = null;
+  const [user, setUser] = useState('');
+  useEffect(() => {
+    const unsubscriber = auth().onAuthStateChanged(userExist => {
+      if (userExist) {
+        setUser(userExist);
+      } else {
+        setUser('');
+      }
+    });
+    return unsubscriber; // unsubscribe on unmount
+  }, []);
+
   return (
     <NavigationContainer>
       {user ? <HomeNavigator /> : <AuthNavigator />}
